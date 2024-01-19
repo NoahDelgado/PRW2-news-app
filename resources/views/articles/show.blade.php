@@ -13,8 +13,8 @@
     <a href="{{ route('articles.edit', $article) }}">Modifier cet
         article</a>
     <h3>Enchère </h3>
-    <p>Date de la meilleur enchère : {{ $article->auctions->created_at }}</p>
-    <a href="{{ route('articles.auctions.create', $article) }}">Enchérir sur cet
+    <p>Date de la meilleur enchère : {{ $bestAuction }}</p>
+    <a href="{{ route('articles.auctions.create', $article) }}">Enchèrir sur cet
         article</a>
 
     <h3>Commentaires</h3>
