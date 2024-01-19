@@ -42,6 +42,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        $article->incrementViews();
         return view('articles.show', compact('article'));
     }
 
@@ -73,7 +74,8 @@ class ArticleController extends Controller
 
     public function topByViews()
     {
-        $articles = Article::orderBy('views', 'desc')->get();
+        //get the top 5 articles by views
+        $articles = Article::unarchived()->orderBy('views', 'desc')->take(5)->get();
         return view('articles.top', ['articles' => $articles]);
     }
 }
