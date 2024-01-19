@@ -10,8 +10,12 @@
         @method('DELETE')
         <input type="submit" value="Supprimer l'article">
     </form>
-
-    <a href="{{ route('articles.edit', $article) }}">Modifier cet article</a>
+    <a href="{{ route('articles.edit', $article) }}">Modifier cet
+        article</a>
+    <h3>Enchère </h3>
+    <p>Date de la meilleur enchère : {{ $bestAuction }}</p>
+    <a href="{{ route('articles.auctions.create', $article) }}">Enchèrir sur cet
+        article</a>
 
     <h3>Commentaires</h3>
 
@@ -24,11 +28,10 @@
     @endunless
 
     <ul>
-    @foreach ($article->comments as $comment)
-        <li>
-            <p>{{ $comment->body  }}</p>
-        </li>
-    @endforeach
+        @foreach ($article->comments as $comment)
+            <li>
+                <p>{{ $comment->body }}</p>
+            </li>
+        @endforeach
     </ul>
-
 @endsection

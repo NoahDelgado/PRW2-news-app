@@ -43,7 +43,8 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $article->incrementViews();
-        return view('articles.show', compact('article'));
+        $bestAuction = $article->bestAuction();
+        return view('articles.show', compact('article', 'bestAuction'));
     }
 
     /**

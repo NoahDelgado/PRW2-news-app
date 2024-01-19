@@ -13,6 +13,10 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class);
+    }
 
     public function scopeUnarchived(Builder $query)
     {
@@ -34,6 +38,10 @@ class Article extends Model
         $this->timestamps = false;
         $this->update(['archived_at' => now()]);
         $this->timestamps = true;
+    }
+    public function bestAuction()
+    {
+        return $this->auctions()->orderBy('bid', 'desc')->first()->created_at ?? null;
     }
     public function incrementViews()
     {
