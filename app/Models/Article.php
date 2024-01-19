@@ -39,4 +39,8 @@ class Article extends Model
         $this->update(['archived_at' => now()]);
         $this->timestamps = true;
     }
+    public function bestAuction()
+    {
+        return $this->auctions()->orderBy('bid', 'desc')->first()->created_at ?? null;
+    }
 }
