@@ -17,3 +17,4 @@ use App\Http\Controllers\CommentController;
 
 Route::resource('articles', ArticleController::class);
 Route::resource('articles.comments', CommentController::class)->only(['store']);
+Route::get('/', [ArticleController::class, 'topByViews'])->name('articles.topByViews');
