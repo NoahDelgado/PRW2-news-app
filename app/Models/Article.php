@@ -13,6 +13,10 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class);
     }
+    public function auctions()
+    {
+        return $this->hasMany(Auction::class);
+    }
 
     public function scopeUnarchived(Builder $query)
     {
