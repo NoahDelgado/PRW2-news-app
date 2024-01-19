@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Article extends Model
 {
-    protected $fillable = ['title', 'body', 'published_at', 'archived_at'];
+    protected $fillable = ['title', 'body', 'views', 'published_at', 'archived_at'];
 
     public function comments()
     {
@@ -33,6 +33,12 @@ class Article extends Model
     {
         $this->timestamps = false;
         $this->update(['archived_at' => now()]);
+        $this->timestamps = true;
+    }
+    public function incrementViews()
+    {
+        $this->timestamps = false;
+        $this->increment('views');
         $this->timestamps = true;
     }
 }
