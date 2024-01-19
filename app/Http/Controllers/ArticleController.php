@@ -70,4 +70,10 @@ class ArticleController extends Controller
         $article->archive();
         return redirect()->route('articles.index');
     }
+
+    public function topByViews()
+    {
+        $articles = Article::orderBy('views', 'desc')->get();
+        return view('articles.top', ['articles' => $articles]);
+    }
 }
